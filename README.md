@@ -90,12 +90,21 @@ python html_to_csv_converter.py --help
 The generated CSV files contain the following columns (compatible with Readwise):
 
 - **Highlight**: The actual text of the highlight (mandatory)
-- **Title**: The name of the book
-- **Author**: The author of the book
+- **Title**: The name of the book (extracted from HTML header)
+- **Author**: The author of the book (extracted from HTML header)
 - **URL**: (empty for books, used for articles)
 - **Note**: Your personal notes attached to the highlight
 - **Location**: Sequential number indicating highlight order
 - **Date**: When the highlight was made (YYYY-MM-DD HH:MM:SS format)
+
+### 📝 About Book Titles & Authors
+
+The tool automatically extracts book titles and authors from the HTML file's header (the `<h2>` tag), which typically follows the format: **"Book Title - Author Name"**.
+
+**If the book title or author appears incorrect in your CSV:**
+1. Open the generated CSV file in Excel, Google Sheets, or any text editor
+2. Manually edit the **Title** and **Author** columns as needed
+3. Save the file and proceed with Readwise import
 
 ## 🤝 Contributing & Support
 

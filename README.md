@@ -106,6 +106,67 @@ The tool automatically extracts book titles and authors from the HTML file's hea
 2. Manually edit the **Title** and **Author** columns as needed
 3. Save the file and proceed with Readwise import
 
+*Common reasons for incorrect extraction: unusual formatting in the original Meebook export, titles with dashes, or missing author information.*
+
+## 📚 Complete Workflow Example
+
+Here's exactly what happens when you use this tool:
+
+### Step 1: Your Meebook HTML files (in `html-files/`)
+```
+html-files/
+├── Why We Sleep_ Unlocking the Power of Sleep and Dreams - Matthew Walker_20251026_083943.html
+└── To Kill a Mockingbird - Harper Lee_20251026_083931.html
+```
+
+### Step 2: Run the Converter
+**Double-click** `batch_convert.bat` (Windows) or run `python html_to_csv_converter.py --batch`
+
+**Console Output:**
+```
+Found 2 HTML files to process:
+  - Why We Sleep_ Unlocking the Power of Sleep and Dreams - Matthew Walker_20251026_083943.html
+  - To Kill a Mockingbird - Harper Lee_20251026_083931.html
+
+Processing: Why We Sleep_ Unlocking the Power of Sleep and Dreams - Matthew Walker_20251026_083943.html
+  ✓ Created: output\Why We Sleep_ Unlocking the Power of Sleep and Dreams - Matthew Walker.csv
+  ✓ Found 36 highlights
+
+Processing: To Kill a Mockingbird - Harper Lee_20251026_083931.html
+  ✓ Created: output\To Kill a Mockingbird - Harper Lee.csv
+  ✓ Found 7 highlights
+
+============================================================
+BATCH PROCESSING COMPLETE!
+============================================================
+Combined CSV file: output\all_books_combined.csv
+Total highlights across all books: 43
+```
+
+### Step 3: Generated Files (in `output/`)
+```
+output/
+├── Why We Sleep_ Unlocking the Power of Sleep and Dreams - Matthew Walker.csv  (36 highlights)
+├── To Kill a Mockingbird - Harper Lee.csv  (7 highlights)
+└── all_books_combined.csv  (43 total highlights)
+```
+
+### Step 4: Fix Book Titles (Optional but Recommended)
+1. **Open** `all_books_combined.csv` in Excel or Google Sheets
+2. **Edit the Title column** to clean up book titles:
+   - Change `"Why We Sleep_ Unlocking the Power of Sleep and Dreams"` → `"Why We Sleep"`
+   - Keep `"To Kill a Mockingbird"` as is
+3. **Save** the file
+
+### Step 5: Import to Readwise
+1. Go to [readwise.io/import_bulk](https://readwise.io/import_bulk)
+2. **Upload** your edited `all_books_combined.csv`
+3. **✅ Success!** All 43 highlights are now in Readwise with clean titles, proper dates, and personal notes
+
+**Result in Readwise:**
+- 📖 "Why We Sleep" by Matthew Walker (36 highlights)
+- 📖 "To Kill a Mockingbird" by Harper Lee (7 highlights)
+
 ## 🤝 Contributing & Support
 
 ### Found a Bug?
